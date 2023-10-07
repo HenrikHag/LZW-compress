@@ -14,6 +14,6 @@ To compress `<filename>`
 `$ ./lzw_compress -c <filename>`  
 Returns the compressed file named `<filename>.lzw`  
 
-To decompress `<filename>`
+To decompress `<filename>`  
 `$ ./lzw_compress -d <filename>`  
 Returns the decompressed file  
