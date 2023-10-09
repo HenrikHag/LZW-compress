@@ -9,7 +9,7 @@ int main(int argc, char const *argv[])
     if (argc == 3) {
         if (std::string(argv[1]) == "-c") { // Compressing
             // File handling
-            std::ifstream input_file (std::string(argv[2]),std::ios::in|std::ios::binary|std::ios::ate);
+            std::ifstream input_file (std::string(argv[2]),std::ios::in|std::ios::ate);
             std::string const output_file_name = std::string(argv[2])+".lzw";
             std::ofstream output_file (output_file_name,std::ios::out|std::ios::binary|std::ios::trunc); // read over existing file
             
@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
             std::ifstream input_file (std::string(argv[2]),std::ios::in|std::ios::binary|std::ios::ate);
             int length = std::string(argv[2]).length();
             std::string const output_file_name = std::string(argv[2]).substr(0,length-4);
-            std::ofstream output_file (output_file_name,std::ios::out|std::ios::binary|std::ios::trunc);
+            std::ofstream output_file (output_file_name,std::ios::out|std::ios::trunc);
             
             std::cout << "Decompressing '" << std::string(argv[2]) << "' using the LZW algorithm\n";
             // lzw_decompress();
