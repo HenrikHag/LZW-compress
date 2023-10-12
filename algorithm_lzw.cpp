@@ -15,7 +15,7 @@ void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
         // std::cout << ch;
     }
     
-    std::cout << input_file.tellg();
+    std::cout << "Original filesize = " << input_file.tellg() << "\n";
 
     // for (int i=0; i<input_file_length; i++)
     // std::cout << "Aight\n";
