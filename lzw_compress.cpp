@@ -1,11 +1,16 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+#include "algorithm_lzw.hpp"
+#include "algorithm_lzw.cpp"
+
 
 std::string const how_to_use = "To use: lzw <command> <filename>\ncommands:\n'-c' to compress\n'-d' to decompress";
 
 int main(int argc, char const *argv[])
 {
+    
+    #ifdef TESTING
+
+        lzw_compress(input_file, output_file);
+    #else
     if (argc == 3) {
         if (std::string(argv[1]) == "-c") { // Compressing
             // File handling
@@ -19,7 +24,7 @@ int main(int argc, char const *argv[])
             }
 
             std::cout << "Compressing '" << std::string(argv[2]) << "' using the LZW algorithm\n";
-            // lzw_compress();
+            lzw_compress(input_file, output_file);
 
             input_file.close(); output_file.close();
         } else if (std::string(argv[1]) == "-d") { // Decompressing
@@ -29,7 +34,7 @@ int main(int argc, char const *argv[])
             std::ofstream output_file (output_file_name,std::ios::out|std::ios::trunc);
             
             std::cout << "Decompressing '" << std::string(argv[2]) << "' using the LZW algorithm\n";
-            // lzw_decompress();
+            // lzw_decompress(input_file, output_file);
 
             input_file.close(); output_file.close();
         } else {
@@ -41,5 +46,6 @@ int main(int argc, char const *argv[])
         return -1;
     }
     
+    #endif
     return 0;
 }
