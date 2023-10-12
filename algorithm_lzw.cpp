@@ -1,6 +1,6 @@
 #include "algorithm_lzw.hpp"
 
-void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
+void lzw_compress(std::ifstream &input_file, std::ofstream &output_file) {
     // compression
     std::map<std::string,int> lzw_dict;
     std::string chars_in_dict;
@@ -28,7 +28,7 @@ void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
     return;
 }
 
-void lzw_decompress(std::ifstream& input_file,std::ofstream& output_file) {
+void lzw_decompress(std::ifstream &input_file, std::ofstream &output_file) {
     std::cout << "Not yet implemented";
     return;
 }

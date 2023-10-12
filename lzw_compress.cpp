@@ -1,6 +1,4 @@
 #include "algorithm_lzw.hpp"
-#include "algorithm_lzw.cpp"
-
 
 std::string const how_to_use = "To use: lzw <command> <filename>\ncommands:\n'-c' to compress\n'-d' to decompress";
 
