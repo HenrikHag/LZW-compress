@@ -13,11 +13,16 @@ int main(int argc, char const *argv[])
         if (std::string(argv[1]) == "-c") { // Compressing
             // File handling
             std::ifstream input_file (std::string(argv[2]),std::ios::in|std::ios::ate);
+            if (!input_file.is_open()) {
+                std::cerr << "Failed to open file: " << argv[2] << std::endl;
+                return -1;
+            }
+            // TODO: Implement check if a file of that name exists (Open as ifstream first or include sys)
+            //       Prompt if file should be overwritten
             std::string const output_file_name = std::string(argv[2])+".lzw";
             std::ofstream output_file (output_file_name,std::ios::out|std::ios::binary|std::ios::trunc); // read over existing file
-            
-            if (!input_file.is_open() || !output_file.is_open()) {
-                std::cerr << "Failed to open file: " << argv[2] << std::endl;
+            if (!output_file.is_open()) {
+                std::cerr << "Failed to open output file: " << argv[2] << ".lzw" << std::endl;
                 return -1;
             }
 
