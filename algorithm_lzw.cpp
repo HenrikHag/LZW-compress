@@ -1,6 +1,25 @@
 #include "algorithm_lzw.hpp"
 
 void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
+    
+    
+    int input_file_size = input_file.tellg();
+    std::cout << "Original filesize = " << input_file_size << "\n";
+    input_file.seekg(0, std::ios::beg);
+    std::string input_text;
+    if (input_file.is_open()) {
+        while (getline (input_file,input_text)) {
+            std::cout << input_text << "\n";
+            // TODO: Read whole file at once with \n chars into input_text
+        }
+    }
+    std::vector<std::string> output_text = lzw_compress(input_text, input_file_size);
+    // Write output_text to file
+    // Use Huffmann coding
+    return;
+}
+
+std::vector<std::string> lzw_compress(std::string input_string, int input_size) {
     // compression
     std::map<std::string,int> lzw_dict;
     std::string chars_in_dict;
@@ -14,18 +33,20 @@ void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
         lzw_dict[ch] = i;
         // std::cout << ch;
     }
-    
-    std::cout << "Original filesize = " << input_file.tellg() << "\n";
 
-    // for (int i=0; i<input_file_length; i++)
-    // std::cout << "Aight\n";
-    // for (int i=0; i<len_uncompressed_data; i++) {
-        // lzw_dict[char(i)] = i;
+    std::string section = "";
+    int next_code = 256;
+    for (int i=0; i<input_size; i++) {
+        section = section + input_string[i];
+        if (lzw_dict.find(section)==lzw_dict.end()) {
+            // Not found in dict
+            lzw_dict[section] = next_code;
+            next_code++;
+        }
         // std::cout << lzw_dict[std::to_string(i)];
-    // }
-    // lzw_dict["aa"] = 3;
-    // std::cout << ;
-    return;
+    }
+
+    return result;
 }
 
 void lzw_decompress(std::ifstream& input_file,std::ofstream& output_file) {
