@@ -1,8 +1,6 @@
 #include "algorithm_lzw.hpp"
 
 void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
-    
-    
     int input_file_size = input_file.tellg();
     std::cout << "Original filesize = " << input_file_size << "\n";
     input_file.seekg(0, std::ios::beg);
@@ -13,17 +11,17 @@ void lzw_compress(std::ifstream& input_file,std::ofstream& output_file) {
             // TODO: Read whole file at once with \n chars into input_text
         }
     }
-    std::vector<std::string> output_text = lzw_compress(input_text, input_file_size);
+    std::vector<int> output_text = lzw_compress(input_text, input_file_size);
     // Write output_text to file
     // Use Huffmann coding
     return;
 }
 
-std::vector<std::string> lzw_compress(std::string input_string, int input_size) {
+std::vector<int> lzw_compress(std::string input_string, int input_size) {
     // compression
     std::map<std::string,int> lzw_dict;
     std::string chars_in_dict;
-    std::vector<std::string> result;
+    std::vector<int> result;
     // int len_uncompressed_data;
 
     // initialize

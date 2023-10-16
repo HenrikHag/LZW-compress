@@ -1,4 +1,5 @@
 #include "algorithm_lzw.hpp"
+// #include "unit_testing.hpp"
 
 std::string const how_to_use = "To use: lzw <command> <filename>\ncommands:\n'-c' to compress\n'-d' to decompress";
 
@@ -6,8 +7,7 @@ int main(int argc, char const *argv[])
 {
     
     #ifdef TESTING
-
-        lzw_compress(input_file, output_file);
+        run_unittests();
     #else
     if (argc == 3) {
         if (std::string(argv[1]) == "-c") { // Compressing
